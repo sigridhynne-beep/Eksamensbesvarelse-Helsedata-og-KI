@@ -1,0 +1,94 @@
+Variabelliste – Ezetrol bivirkningsskjema (syntetisk datasett)
+Dette dokumentet beskriver alle variablene som inngår i datasettet som brukes for å undersøke om svar på et digitalt bivirkningsskjema for Ezetrol kan predikere sannsynligheten for at pasienter med familiær hyperkolesterolemi slutter å ta medisinen.
+
+🧍 Pasientinformasjon
+patient_id
+Type: Integer
+Beskrivelse: Unik syntetisk ID for hver pasient (1–500).
+
+age
+Type: Integer
+Beskrivelse: Pasientens alder i år.
+
+sex
+Type: Categorical (M/F)
+Beskrivelse: Pasientens kjønn.
+
+💊 Medisin og oppstart
+medication_name
+Type: String
+Beskrivelse: Navn på medisinen. I dette datasettet: Ezetrol.
+
+dose_mg
+Type: Integer
+Beskrivelse: Dose i milligram. Typisk 10 mg, men syntetisk variasjon forekommer.
+
+days_since_start
+Type: Integer
+Beskrivelse: Antall dager fra oppstart av Ezetrol til pasienten fyller ut bivirkningsskjemaet.
+
+📋 Bivirkningsskårer (skala 1–5)
+Alle skårer er på skalaen:
+1 = ingen bivirkninger  
+5 = veldig mye bivirkninger
+
+muscle_pain_score
+Type: Integer (1–5)
+Beskrivelse: Grad av muskelsmerter.
+
+fatigue_score
+Type: Integer (1–5)
+Beskrivelse: Grad av tretthet.
+
+headache_score
+Type: Integer (1–5)
+Beskrivelse: Grad av hodepine.
+
+gi_symptoms_score
+Type: Integer (1–5)
+Beskrivelse: Grad av mage/tarm-plager.
+
+sleep_disturbance_score
+Type: Integer (1–5)
+Beskrivelse: Grad av søvnforstyrrelser.
+
+overall_side_effect_score
+Type: Integer (1–5)
+Beskrivelse: Pasientens egen totalvurdering av bivirkninger.
+
+🎯 Etterlevelse (label for KI-modell)
+adherence_status
+Type: Integer (0/1)
+Beskrivelse:  
+0 = pasienten fortsetter med Ezetrol  
+1 = pasienten har sluttet med Ezetrol
+
+adherence_assessment_date
+Type: Date
+Beskrivelse: Dato for når etterlevelsesstatus ble registrert.
+
+
+📦 Totalt antall variabler: 13
+Datasettet er designet for å være:
+
+enkelt
+
+klinisk relevant
+
+KI‑vennlig
+
+direkte knyttet til problemstillingen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
