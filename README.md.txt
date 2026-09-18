@@ -6,11 +6,6 @@ Dette repoet inneholder prosjektfilene mine for IT6119.
 - Notebook: (kommer)
 - Formål: Utforske et lite helsedatasett og bygge en enkel AI-modell.
 
-Her kommer en **ferdig, profesjonell README** du kan lime rett inn i `README.md`‑filen din.  
-Den er laget for IT6119 og passer perfekt til et lite helsedatasett + notebook‑analyse.
-
-Du trenger ikke endre noe – bare tilpass repo‑navn og filnavn hvis du vil.
-
 ---
 
 # 📘 IT6119 – Final Project  
@@ -67,15 +62,5 @@ Prosjektet følger prinsippene fra IT6119:
 - modellen brukes kun som læringsverktøy  
 - fokus på trygg, ansvarlig og forståelig KI
 
-## 📅 Status
-- Repo opprettet  
-- Datasett lastet opp  
-- README opprettet  
-- Notebook genereres i neste steg  
 
----
 
-Hvis du vil, lager jeg **hele notebooken** for deg nå – komplett med kode, figurer, modell og refleksjon.  
-Bare si:
-
-**“Lag notebooken.”**
