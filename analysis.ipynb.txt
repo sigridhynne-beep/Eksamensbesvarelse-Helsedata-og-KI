@@ -1,0 +1,176 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# IT6119 – Final Project\n",
+    "## Analyse av helsedata og enkel KI-modell\n",
+    "\n",
+    "Denne notebooken viser en enkel arbeidsflyt for datakvalitet, visualisering og modellering."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.linear_model import LogisticRegression\n",
+    "from sklearn.metrics import accuracy_score, confusion_matrix, classification_report\n",
+    "from sklearn.ensemble import RandomForestClassifier"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1. Last inn datasettet"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.read_csv('synthetic_dataset.csv')\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. Datakvalitet"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.info()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df.describe()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. Visualiseringer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sns.pairplot(df)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 4. Modellering – Logistisk regresjon"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "X = df.drop('target', axis=1)\n",
+    "y = df['target']\n",
+    "\n",
+    "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n",
+    "\n",
+    "log_reg = LogisticRegression(max_iter=1000)\n",
+    "log_reg.fit(X_train, y_train)\n",
+    "\n",
+    "y_pred = log_reg.predict(X_test)\n",
+    "accuracy_score(y_test, y_pred)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Confusion matrix"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cm = confusion_matrix(y_test, y_pred)\n",
+    "sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 5. Modellering – Random Forest"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "rf = RandomForestClassifier(n_estimators=200, random_state=42)\n",
+    "rf.fit(X_train, y_train)\n",
+    "y_pred_rf = rf.predict(X_test)\n",
+    "accuracy_score(y_test, y_pred_rf)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 6. Refleksjon\n",
+    "\n",
+    "- Datasettet er syntetisk og trygt å bruke.\n",
+    "- Logistisk regresjon gir en enkel baseline-modell.\n",
+    "- Random Forest gir ofte bedre resultater, men er mindre transparent.\n",
+    "- KI i helsetjenesten må brukes med fokus på datakvalitet, transparens og risiko.\n",
+    "- Modellen her er kun et læringsverktøy og ikke egnet for klinisk bruk."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
